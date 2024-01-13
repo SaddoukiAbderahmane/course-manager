@@ -1,0 +1,52 @@
+﻿﻿@model coursemanagement.Models.CourseViewModel
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("Add Course", "Add", "Course", null, new { @class = "btn btn-primary" })
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">professeur</th>
+            <th scope="col">filiere</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var C in Model.courses)
+        {
+            <tr>
+
+                <td>@C.Id</td>
+                <td>@C.Name</td>
+                <td>@C.professeur</td>
+                <td>@C.filiere</td>
+                <td class="buttons-column">
+
+                    <div class="flex-grow-1">
+                        @using (Html.BeginForm("Delete", "Course", new { Id = C.Id }, FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <input type="submit" class="btn btn-primary" value="Delete" />
+                        }
+                    </div>
+                </td>
+
+                <td class="buttons-column">
+
+                    @Html.ActionLink("Update", "Update", "Course", new { Id = C.Id }, new { @class = "btn btn-primary" })
+
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

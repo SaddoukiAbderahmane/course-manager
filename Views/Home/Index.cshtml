@@ -1,0 +1,30 @@
+﻿﻿@model coursemanagement.Models.CourseViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">professeur</th>
+            <th scope="col">filiere</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var C in Model.courses)
+        {
+            <tr>
+
+                <td>@C.Id</td>
+                <td>@C.Name</td>
+                <td>@C.professeur</td>
+                <td>@C.filiere</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
